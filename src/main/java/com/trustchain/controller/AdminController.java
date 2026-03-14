@@ -20,7 +20,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/admin")
 
-@CrossOrigin(origins = "${cors.allowed-origins}")
+@CrossOrigin(origins = "${https://trustchain-frontend.onrender.com}")
 public class AdminController {
 
     private final ProviderService providerService;
