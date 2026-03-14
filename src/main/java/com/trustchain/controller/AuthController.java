@@ -4,7 +4,6 @@ import com.trustchain.dto.LoginRequest;
 import com.trustchain.dto.RegisterRequest;
 import com.trustchain.service.AuthService;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,14 +11,15 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/auth")
-@RequiredArgsConstructor
-@CrossOrigin(origins = "${https://trustchain-frontend.onrender.com}")
+@CrossOrigin(origins = "https://trustchain-frontend.onrender.com")
 public class AuthController {
 
     private final AuthService authService;
+
     public AuthController(AuthService authService) {
         this.authService = authService;
     }
+
     @PostMapping("/register")
     public ResponseEntity<?> register(@Valid @RequestBody RegisterRequest request) {
         try {
