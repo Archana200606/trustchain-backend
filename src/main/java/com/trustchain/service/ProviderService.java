@@ -23,10 +23,12 @@ public class ProviderService {
     public List<Provider> getAllActiveProviders() {
         return providerRepository.findByStatusOrderByTrustScoreDesc(Provider.Status.ACTIVE);
     }
-
+    @Transactional(readOnly = true)
     public Provider getProviderById(Long id) {
-        return providerRepository.findById(id)
+        Provider provider = providerRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Provider not found with id: " + id));
+
+        return provider;
     }
 
     public List<Provider> searchProviders(String category, String location) {

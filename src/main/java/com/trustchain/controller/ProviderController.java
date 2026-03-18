@@ -2,7 +2,7 @@ package com.trustchain.controller;
 
 import com.trustchain.model.Provider;
 import com.trustchain.service.ProviderService;
-import lombok.RequiredArgsConstructor;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +13,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/providers")
 
-@CrossOrigin(origins = "https://trustchain-frontend.onrender.com")
+@CrossOrigin(origins = "${cors.allowed-origins}")
 public class ProviderController {
 
     private final ProviderService providerService;
@@ -35,10 +35,13 @@ public class ProviderController {
         try {
             return ResponseEntity.ok(providerService.getProviderById(id));
         } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
+            e.printStackTrace(); // 👈 VERY IMPORTANT
+
+            return ResponseEntity
+                    .status(500)
+                    .body(Map.of("error", e.getMessage()));
         }
     }
-
     @PostMapping
     public ResponseEntity<?> addProvider(@RequestBody Provider provider, Authentication auth) {
         try {

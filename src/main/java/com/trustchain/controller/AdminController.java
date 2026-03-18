@@ -8,7 +8,7 @@ import com.trustchain.repository.ReviewRepository;
 import com.trustchain.repository.UserRepository;
 import com.trustchain.service.ProviderService;
 import com.trustchain.service.ReviewService;
-import lombok.RequiredArgsConstructor;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +20,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/admin")
 
-@CrossOrigin(origins = "https://trustchain-frontend.onrender.com")
+@CrossOrigin(origins = "${cors.allowed-origins}")
 public class AdminController {
 
     private final ProviderService providerService;

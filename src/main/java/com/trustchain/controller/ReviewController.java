@@ -4,7 +4,7 @@ import com.trustchain.dto.ReviewDTO;
 import com.trustchain.model.Review;
 import com.trustchain.service.ReviewService;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +14,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/reviews")
-@CrossOrigin(origins = "https://trustchain-frontend.onrender.com")
+@CrossOrigin(origins = "${cors.allowed-origins}")
 public class ReviewController {
 
     private final ReviewService reviewService;
