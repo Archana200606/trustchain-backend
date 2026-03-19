@@ -14,7 +14,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/reviews")
-@CrossOrigin(origins = "${cors.allowed-origins}")
+@CrossOrigin(origins = "https://trustchain-frontend.onrender.com")
 public class ReviewController {
 
     private final ReviewService reviewService;
